@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+    name: RedisCacheDemo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/flux
+    username: flux
+    password: flux
+    driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      host: 172.25.25.97
+      port: 6379
+   #   password: passw0rd$             #if redis has password set it from here
+  cache:
+    type: redis # default type is NONE
+    redis:
+      time-to-live: 300s              #set all entities TTL. If each entity has own ttl logic, you can set this from entity class
+      key-prefix: demo-cache          #each key prefix starts with from this word
+      use-key-prefix: true            #enable key prefix
+      cache-null-values: true         #save null values into cache
+
+
